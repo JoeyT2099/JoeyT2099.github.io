@@ -38,7 +38,12 @@
     }
     .section-label::after { display: none; }
 
-    h2 { font-size: 1.4rem; border-bottom: 1px solid #ccc; padding-bottom: 4px; margin-bottom: 12px; }
+    h2 {
+      font-size: 1.4rem;
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 4px;
+      margin-bottom: 12px;
+    }
 
     p { margin-bottom: 12px; }
 
@@ -71,17 +76,19 @@
     }
     .media-placeholder .media-icon { font-size: 2rem; }
 
-    .access-box {
+    .contact-box {
+      margin-top: 24px;
       border: 1px solid #ccc;
-      padding: 20px;
-      margin-top: 12px;
-    }
-    .access-box .cta-row {
+      padding: 16px 20px;
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 20px;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
     }
+    .contact-box div h3 { font-size: 1rem; margin-bottom: 4px; }
+    .contact-box div p { font-size: 0.9rem; margin: 0; color: #444; }
+
     .btn {
       display: inline-block;
       padding: 8px 18px;
@@ -93,11 +100,6 @@
     .btn-primary { background: #333; color: #fff; border-color: #333; }
     .btn:hover { background: #eee; }
     .btn-primary:hover { background: #555; }
-
-    .prereq h3 { font-size: 0.95rem; font-weight: bold; margin-bottom: 6px; }
-    .prereq ul { padding-left: 20px; margin-bottom: 0; }
-    .prereq ul li { font-size: 0.9rem; color: #444; padding: 2px 0; }
-    .prereq + .prereq { margin-top: 16px; }
 
     .team-grid {
       display: grid;
@@ -123,21 +125,13 @@
     }
     .member-card h3 { font-size: 1rem; margin-bottom: 2px; }
     .member-card .role { font-size: 0.85rem; color: #666; margin-bottom: 8px; }
-    .member-card .links { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; }
-    .member-card .links a { font-size: 0.8rem; color: #0000ee; }
-
-    .contact-box {
-      margin-top: 24px;
-      border: 1px solid #ccc;
-      padding: 16px 20px;
+    .member-card .links {
       display: flex;
+      justify-content: center;
+      gap: 8px;
       flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
     }
-    .contact-box div h3 { font-size: 1rem; margin-bottom: 4px; }
-    .contact-box div p { font-size: 0.9rem; margin: 0; color: #444; }
+    .member-card .links a { font-size: 0.8rem; color: #0000ee; }
 
     footer {
       text-align: center;
@@ -151,112 +145,97 @@
 </head>
 <body>
 
-<!-- 
-     HERO / HEADER
- -->
+<!-- header -->
 <header>
   <span class="badge">Project Portfolio</span>
   <h1>Your Project Name Here</h1>
   <p class="tagline">
-    A clear, one-sentence description of what your project does and who it is for.
-    Replace this with your real tagline.
+    A focused, one-line summary of the project and the people it is meant for.
   </p>
   <a href="#access" class="hero-cta">Try It Now →</a>
 </header>
 
 <main>
 
-  <!-- ═════════════════════════════════════════
-       SECTION 1 — PROJECT DESCRIPTION
-  ═══════════════════════════════════════════ -->
+  <!-- project description -->
   <section id="description">
     <div class="section-label">01 — Project Description</div>
     <h2>What Is It &amp; Why Does It Matter?</h2>
 
     <p>
-      <!-- ONE-SENTENCE DESCRIPTION -->
-      <strong>[Project Name]</strong> is a [type of project] built for [target audience] that [core action or benefit].
+      <strong>[Project Name]</strong> is a [type of project] designed for [audience], built to make [task / goal] simpler, faster, or more useful.
     </p>
 
     <p>
-      <!-- THE PROBLEM -->
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque habitant morbi tristique
-      senectus et netus et malesuada fames ac turpis egestas. Describe the problem your project solves here,
-      and explain why it matters to your target audience.
+      senectus et netus et malesuada fames ac turpis egestas. Integer non arcu sed nibh tempus
+      hendrerit a non massa.
     </p>
 
     <p>
-      <!-- THE "SO WHAT?" -->
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-      labore et dolore magna aliqua. What makes your project interesting or notable — your "so what?"
-      goes here.
+      Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
+      laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi
+      architecto beatae vitae dicta sunt explicabo.
     </p>
   </section>
 
-  <!-- ══════════════════════════════════════════
-       SECTION 2 — KEY FEATURES / HIGHLIGHTS
-  ═══════════════════════════════════════════ -->
+  <!-- highlights -->
   <section id="features">
     <div class="section-label">02 — Key Features &amp; Highlights</div>
     <h2>What Can It Do?</h2>
     <p>
-      Below are the standout capabilities of the project, described from the user's perspective.
+      A quick look at the parts of the project that matter most.
     </p>
 
     <div class="card-grid">
-
       <div class="card">
         <div class="icon">✦</div>
         <h3>Feature One</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Describe what the user can do or experience.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at velit ac purus fermentum luctus.</p>
       </div>
 
       <div class="card">
         <div class="icon">✦</div>
         <h3>Feature Two</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Focus on the user benefit, not the implementation.</p>
+        <p>Praesent commodo, sapien non facilisis hendrerit, mi neque sodales arcu, vitae faucibus nisl sem in erat.</p>
       </div>
 
       <div class="card">
         <div class="icon">✦</div>
         <h3>Feature Three</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. What outcome does this feature enable?</p>
+        <p>Curabitur ultrices, nunc nec gravida tincidunt, ligula sem cursus justo, eu feugiat lorem magna sit amet leo.</p>
       </div>
 
       <div class="card">
         <div class="icon">✦</div>
         <h3>Feature Four</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Optional — add or remove cards as needed.</p>
+        <p>Aliquam erat volutpat. Donec pretium, arcu non posuere tincidunt, nisl lorem viverra nibh, vitae dictum metus est at odio.</p>
       </div>
 
       <div class="card">
         <div class="icon">✦</div>
         <h3>Feature Five</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Optional — add or remove cards as needed.</p>
+        <p>Morbi in turpis sed augue pharetra consequat. Nulla facilisi. Duis nec neque vel augue ullamcorper luctus.</p>
       </div>
-
     </div>
 
-    <!-- MEDIA: replace this placeholder with a real screenshot, GIF, or embed -->
+    <!-- media / demo slot -->
     <div class="media-placeholder">
       <span class="media-icon">🖼</span>
-      <strong>Screenshot / Demo Video / Figure</strong>
+      <strong>Screenshot / Demo / Figure</strong>
       <span>
-        Replace this block with an &lt;img&gt;, &lt;video&gt;, &lt;iframe&gt;, or an embedded demo.<br />
-        Show the project in action or illustrate key results.
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br />
+        Visuals, embeds, or quick demos can live here.
       </span>
     </div>
   </section>
 
-  <!-- ══════════════════════════════════════════
-       SECTION 3 — TEAM CREDITS
-  ═══════════════════════════════════════════ -->
+  <!-- team -->
   <section id="team">
     <div class="section-label">04 — Team Credits</div>
     <h2>Meet the Team</h2>
 
     <div class="team-grid">
-
       <div class="member-card">
         <div class="avatar">👤</div>
         <h3>Team Member One</h3>
@@ -286,20 +265,17 @@
           <a href="#">Portfolio</a>
         </div>
       </div>
-
     </div>
 
-    <!-- PAST CONTRIBUTORS (multi-year projects) -->
     <p style="margin-top: 24px; font-size: 0.9rem;">
       <strong>Past Contributors:</strong>
-      Lorem ipsum — acknowledge past contributors here if this is a multi-year project.
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. A brief note can live here if the project has history behind it.
     </p>
 
-    <!-- CONTACT / FEEDBACK -->
     <div class="contact-box">
       <div>
         <h3>Questions or Feedback?</h3>
-        <p>Lorem ipsum — describe how people can reach your team or report issues.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Reach out however makes the most sense for the project.</p>
       </div>
       <div style="display: flex; gap: 10px; flex-wrap: wrap;">
         <a href="#" class="btn btn-outline">Open a GitHub Issue</a>
@@ -311,7 +287,7 @@
 </main>
 
 <footer>
-  <p>© 2026 [Team Name] — All rights reserved.</p>
+  <p>© 2026 [Team Name]</p>
 </footer>
 
 </body>
