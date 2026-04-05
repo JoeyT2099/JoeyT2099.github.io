@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Project Portfolio</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:       #0f1117;
+      --surface:  #1a1d27;
+      --border:   #2a2d3a;
+      --accent:   #6c63ff;
+      --accent2:  #a78bfa;
+      --text:     #e2e8f0;
+      --muted:    #94a3b8;
+      --radius:   12px;
+    }
+
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    /* ── Hero ── */
+    header {
+      background: linear-gradient(135deg, #1e1b4b 0%, #0f1117 60%);
+      border-bottom: 1px solid var(--border);
+      padding: 80px 24px 60px;
+      text-align: center;
+    }
+    header .badge {
+      display: inline-block;
+      background: var(--accent);
+      color: #fff;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 4px 14px;
+      border-radius: 999px;
+      margin-bottom: 20px;
+    }
+    header h1 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 18px;
+      background: linear-gradient(90deg, #fff 0%, var(--accent2) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    header .tagline {
+      font-size: 1.15rem;
+      color: var(--muted);
+      max-width: 620px;
+      margin: 0 auto 32px;
+    }
+    header .hero-cta {
+      display: inline-block;
+      background: var(--accent);
+      color: #fff;
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 14px 36px;
+      border-radius: 999px;
+      text-decoration: none;
+      transition: opacity .2s;
+    }
+    header .hero-cta:hover { opacity: .85; }
+
+    /* ── Layout ── */
+    main {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+    }
+
+    section {
+      margin-top: 72px;
+    }
+
+    .section-label {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent2);
+      margin-bottom: 12px;
+    }
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    h2 {
+      font-size: 1.75rem;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      margin-bottom: 20px;
+    }
+
+    p { color: var(--muted); margin-bottom: 16px; }
+    p:last-child { margin-bottom: 0; }
+
+    /* ── Card grid ── */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+    }
+    .card .icon {
+      font-size: 1.6rem;
+      margin-bottom: 12px;
+    }
+    .card h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .card p { font-size: 0.9rem; }
+
+    /* ── Media placeholder ── */
+    .media-placeholder {
+      margin-top: 32px;
+      background: var(--surface);
+      border: 2px dashed var(--border);
+      border-radius: var(--radius);
+      min-height: 320px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      color: var(--muted);
+      font-size: 0.9rem;
+      text-align: center;
+      padding: 24px;
+    }
+    .media-placeholder .media-icon { font-size: 2.5rem; }
+    .media-placeholder strong { color: var(--text); font-size: 1rem; }
+
+    /* ── Access / CTA box ── */
+    .access-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 32px;
+      margin-top: 24px;
+    }
+    .access-box .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+    .btn {
+      display: inline-block;
+      padding: 11px 26px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: opacity .2s;
+    }
+    .btn:hover { opacity: .8; }
+    .btn-primary { background: var(--accent); color: #fff; }
+    .btn-outline {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    .prereq h3 {
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent2);
+      margin-bottom: 8px;
+    }
+    .prereq ul {
+      list-style: none;
+      padding: 0;
+    }
+    .prereq ul li {
+      color: var(--muted);
+      font-size: 0.9rem;
+      padding: 5px 0;
+      padding-left: 18px;
+      position: relative;
+    }
+    .prereq ul li::before {
+      content: '›';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+    }
+    .prereq + .prereq { margin-top: 20px; }
+
+    /* ── Team ── */
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 20px;
+      margin-top: 24px;
+    }
+
+    .member-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px 24px;
+      text-align: center;
+    }
+    .avatar {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      margin: 0 auto 16px;
+    }
+    .member-card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 4px; }
+    .member-card .role { font-size: 0.85rem; color: var(--accent2); margin-bottom: 12px; }
+    .member-card .links { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
+    .member-card .links a {
+      font-size: 0.8rem;
+      color: var(--muted);
+      text-decoration: none;
+      border: 1px solid var(--border);
+      padding: 4px 12px;
+      border-radius: 999px;
+      transition: border-color .2s, color .2s;
+    }
+    .member-card .links a:hover { border-color: var(--accent); color: var(--accent2); }
+
+    /* ── Contact ── */
+    .contact-box {
+      margin-top: 40px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px 32px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    .contact-box div h3 { font-size: 1rem; font-weight: 700; margin-bottom: 4px; }
+    .contact-box div p { font-size: 0.9rem; margin: 0; }
+
+    /* ── Footer ── */
+    footer {
+      text-align: center;
+      padding: 32px 24px;
+      border-top: 1px solid var(--border);
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════
+     HERO / HEADER
+════════════════════════════════════════════════ -->
+<header>
+  <span class="badge">Project Portfolio</span>
+  <h1>Your Project Name Here</h1>
+  <p class="tagline">
+    A clear, one-sentence description of what your project does and who it is for.
+    Replace this with your real tagline.
+  </p>
+  <a href="#access" class="hero-cta">Try It Now →</a>
+</header>
+
+<main>
+
+  <!-- ══════════════════════════════════════════
+       SECTION 1 — PROJECT DESCRIPTION
+  ═══════════════════════════════════════════ -->
+  <section id="description">
+    <div class="section-label">01 — Project Description</div>
+    <h2>What Is It &amp; Why Does It Matter?</h2>
+
+    <p>
+      <!-- ONE-SENTENCE DESCRIPTION -->
+      <strong>[Project Name]</strong> is a [type of project] built for [target audience] that [core action or benefit].
+    </p>
+
+    <p>
+      <!-- THE PROBLEM -->
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque habitant morbi tristique
+      senectus et netus et malesuada fames ac turpis egestas. Describe the problem your project solves here,
+      and explain why it matters to your target audience.
+    </p>
+
+    <p>
+      <!-- THE "SO WHAT?" -->
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+      labore et dolore magna aliqua. What makes your project interesting or notable — your "so what?"
+      goes here.
+    </p>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       SECTION 2 — KEY FEATURES / HIGHLIGHTS
+  ═══════════════════════════════════════════ -->
+  <section id="features">
+    <div class="section-label">02 — Key Features &amp; Highlights</div>
+    <h2>What Can It Do?</h2>
+    <p>
+      Below are the standout capabilities of the project, described from the user's perspective.
+    </p>
+
+    <div class="card-grid">
+
+      <div class="card">
+        <div class="icon">✦</div>
+        <h3>Feature One</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Describe what the user can do or experience.</p>
+      </div>
+
+      <div class="card">
+        <div class="icon">✦</div>
+        <h3>Feature Two</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Focus on the user benefit, not the implementation.</p>
+      </div>
+
+      <div class="card">
+        <div class="icon">✦</div>
+        <h3>Feature Three</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. What outcome does this feature enable?</p>
+      </div>
+
+      <div class="card">
+        <div class="icon">✦</div>
+        <h3>Feature Four</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Optional — add or remove cards as needed.</p>
+      </div>
+
+      <div class="card">
+        <div class="icon">✦</div>
+        <h3>Feature Five</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Optional — add or remove cards as needed.</p>
+      </div>
+
+    </div>
+
+    <!-- MEDIA: replace this placeholder with a real screenshot, GIF, or embed -->
+    <div class="media-placeholder">
+      <span class="media-icon">🖼</span>
+      <strong>Screenshot / Demo Video / Figure</strong>
+      <span>
+        Replace this block with an &lt;img&gt;, &lt;video&gt;, &lt;iframe&gt;, or an embedded demo.<br />
+        Show the project in action or illustrate key results.
+      </span>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       SECTION 3 — HOW TO ACCESS / TRY IT
+  ═══════════════════════════════════════════ -->
+  <section id="access">
+    <div class="section-label">03 — How to Access or Try It</div>
+    <h2>Get Started</h2>
+
+    <div class="access-box">
+
+      <!-- CALL-TO-ACTION BUTTONS -->
+      <div class="cta-row">
+        <a href="#" class="btn btn-primary">▶ Try It Live</a>
+        <a href="#" class="btn btn-outline">⬇ Download</a>
+        <a href="#" class="btn btn-outline">View on GitHub</a>
+        <a href="#" class="btn btn-outline">Read the Paper</a>
+      </div>
+
+      <!-- PREREQUISITES -->
+      <div class="prereq">
+        <h3>Prerequisites</h3>
+        <ul>
+          <li>Lorem ipsum — list any required software, accounts, or dependencies here.</li>
+          <li>Lorem ipsum — e.g., "Node.js ≥ 18" or "A free API key from XYZ."</li>
+          <li>Lorem ipsum — link to full setup docs if needed.</li>
+        </ul>
+      </div>
+
+      <!-- SETUP STEPS -->
+      <div class="prereq">
+        <h3>Quick Setup</h3>
+        <ul>
+          <li>Step 1 — Lorem ipsum: brief description of the first setup step.</li>
+          <li>Step 2 — Lorem ipsum: brief description of the second setup step.</li>
+          <li>Step 3 — Lorem ipsum: brief description of the third setup step.</li>
+        </ul>
+      </div>
+
+      <!-- SYSTEM REQUIREMENTS -->
+      <div class="prereq">
+        <h3>System Requirements &amp; Platform Limitations</h3>
+        <ul>
+          <li>Lorem ipsum — e.g., "Tested on Windows 11, macOS 14, Ubuntu 22.04."</li>
+          <li>Lorem ipsum — list any known platform limitations or browser requirements.</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       SECTION 4 — TEAM CREDITS
+  ═══════════════════════════════════════════ -->
+  <section id="team">
+    <div class="section-label">04 — Team Credits</div>
+    <h2>Meet the Team</h2>
+
+    <div class="team-grid">
+
+      <div class="member-card">
+        <div class="avatar">👤</div>
+        <h3>Team Member One</h3>
+        <p class="role">Role / Title</p>
+        <div class="links">
+          <a href="#">GitHub</a>
+          <a href="#">Portfolio</a>
+        </div>
+      </div>
+
+      <div class="member-card">
+        <div class="avatar">👤</div>
+        <h3>Team Member Two</h3>
+        <p class="role">Role / Title</p>
+        <div class="links">
+          <a href="#">GitHub</a>
+          <a href="#">Portfolio</a>
+        </div>
+      </div>
+
+      <div class="member-card">
+        <div class="avatar">👤</div>
+        <h3>Team Member Three</h3>
+        <p class="role">Role / Title</p>
+        <div class="links">
+          <a href="#">GitHub</a>
+          <a href="#">Portfolio</a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- PAST CONTRIBUTORS (multi-year projects) -->
+    <p style="margin-top: 24px; font-size: 0.9rem;">
+      <strong style="color: var(--text);">Past Contributors:</strong>
+      Lorem ipsum — acknowledge past contributors here if this is a multi-year project.
+    </p>
+
+    <!-- CONTACT / FEEDBACK -->
+    <div class="contact-box">
+      <div>
+        <h3>Questions or Feedback?</h3>
+        <p>Lorem ipsum — describe how people can reach your team or report issues.</p>
+      </div>
+      <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+        <a href="#" class="btn btn-outline">Open a GitHub Issue</a>
+        <a href="mailto:your@email.com" class="btn btn-outline">Email Us</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <p>© 2026 [Team Name] — All rights reserved.</p>
+</footer>
+
+</body>
+</html>
